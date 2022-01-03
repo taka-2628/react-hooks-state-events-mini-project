@@ -1,18 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import Task from "./Task"
 
-function TaskList({tasks}) {
-  const [taskList, setTaskList] = useState(tasks);
-
-  function handleClickRemove(taskText){
-    const newTaskArr = taskList.filter((task) => {
-      return task.text !== taskText
-    })
-    setTaskList(newTaskArr)
-  }
-
-  const listOfTasks = taskList.map((task) => {
-    return <Task key={task.text} text={task.text} category={task.category} onClickRemove={handleClickRemove}/>
+function TaskList({tasks, onClickRemove}) {
+  
+  const listOfTasks = tasks.map((task) => {
+    return <Task key={task.text} text={task.text} category={task.category} onClickRemove={onClickRemove}/>
   })
 
   return (
